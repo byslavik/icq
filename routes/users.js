@@ -19,14 +19,23 @@ router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please pass username and password.'});
   } else {
+    User.find({ $or: [ { username: req.body.username }, { email: req.body.username } ] }, function(err, users){
+      if (err || users.length > 0) {
+        return res.json({ success: false, msg: 'Username already exists.' });
+      }
+    })
+
     var newUser = new User({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      email: req.body.email,
+      name: req.body.name,
+      lastVisited: new Date()
     });
     // save the user
     newUser.save(function(err) {
       if (err) {
-        return res.json({success: false, msg: 'Username already exists.'});
+        return res.json({ success: false, msg: 'Username already exists.' });
       }
       res.json({success: true, msg: 'Successful created new user.'});
     });

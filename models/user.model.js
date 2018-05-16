@@ -3,12 +3,15 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = new Schema({
-  "username" : String,
-  "mail" : String,
-  "password" : String,
+  "username" : { type : String , unique : true, required : true },
+  "email" : { type : String , unique : true, required : true },
+  "name" : String,
+  "password" : { type : String , required : true },
   "lastVisited" : Date,
   "contacts" : Array
 });
+
+userSchema.index({ username: 1, email: 1 }, { unique: true })
 
 userSchema.pre('save', function (next) {
   var user = this;
@@ -26,7 +29,8 @@ userSchema.pre('save', function (next) {
           });
       });
   } else {
-      return next();
+
+    return next();
   }
 });
 
