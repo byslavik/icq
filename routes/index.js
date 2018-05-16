@@ -1,14 +1,10 @@
-var express    = require('express');        // call express
-var router = express.Router();              // get an instance of the express Router
-
+var express = require('express');        // call express
+var router = express.Router();
+var isLogged = require('../middleware/is-logged-in')
 // routes
 var user = require('./users')
 
-router.use(function(req, res, next) {
-    next();
-});
-
-router.get('/', function(req, res) {
+router.get('/', isLogged, function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 

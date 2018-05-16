@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
+var serverUrl = require('./config/constants').DB_SERVER_URL();
 mongoose.Promise = require('q').Promise;
 var options = {};
-var mongodbUri = 'mongodb://db_user_icq:6n1qnwj6@ds119150.mlab.com:19150/heroku_6n1qnwj6';
 
-mongoose.connect(mongodbUri, options);
+mongoose.connect(serverUrl, options);
 var conn = mongoose.connection;
 
 conn.on('error', function(err) {
