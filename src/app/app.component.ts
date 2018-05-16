@@ -12,7 +12,10 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     this.appService.setUser({
-      userId: "Slava"
+      _id: "",
+      name: "",
+      username: "",
+      contacts: []
     })
   }
 

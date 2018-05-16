@@ -1,0 +1,18 @@
+
+<label>
+    Login:<br/>
+    <input name="username" type="text" placeholder="Please enter your login" [(ngModel)]="username"/>
+</label><br/>
+<label>
+    Password:<br/>
+    <input name="password" type="password" placeholder="Please enter your password" [(ngModel)]="password"/>
+</label><br/>
+<label>
+    E-mail:<br/>
+    <input name="e-mail" type="e-mail" placeholder="Please enter your e-mail" [(ngModel)]="email"/>
+</label><br/>
+<label>
+    Your name:<br/>
+    <input name="name" type="text" placeholder="Please enter your name" [(ngModel)]="name"/>
+</label><br/>
+<input type="submit" value="Register me!" (click)="register()">

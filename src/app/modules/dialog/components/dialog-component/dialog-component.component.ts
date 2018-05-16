@@ -22,7 +22,7 @@ export class DialogComponent implements OnInit {
   @Input() to: string
 
   ngOnInit(){  
-    this.from = this.appService.getUser().userId;
+    this.from = this.appService.getUser()._id;
     this.dialogService.getDialog(this.from, this.to).subscribe((data: Dialog) => this.dialog = data);
   }
 }

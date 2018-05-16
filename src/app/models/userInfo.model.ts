@@ -1,3 +1,7 @@
 export default class UserInfo {
-  userId: String;
+  _id: String;
+  username: String;
+  password?: String;
+  name: String;
+  contacts: UserInfo[];
 }
