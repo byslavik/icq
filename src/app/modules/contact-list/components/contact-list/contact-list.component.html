@@ -1,3 +1,12 @@
-<div>
-<contact-item *ngFor="let contact of contacts" [data]="contact"></contact-item>
+<a (click)="changeContactTab(false)">All Contacts</a> <br/>
+<a (click)="changeContactTab(true)">My Contacts</a> <br/>
+
+<div *ngIf="!isMyContact">
+  All contacts: 
+  <contact-item *ngFor="let contact of allContacts" [data]="contact"></contact-item>
+</div>
+
+<div *ngIf="isMyContact">
+    My contacts: 
+    <contact-item *ngFor="let contact of myContacts" [data]="contact"></contact-item>
 </div>

@@ -8,7 +8,6 @@ import { ContactListModule } from './modules/contact-list/contact-list.module';
 import { DialogModule } from './modules/dialog/dialog.module';
 
 import { RegisterFormModule } from './modules/register-form/register-form.module';
-import { RegisterFormComponent } from './modules/register-form/register-form.component'
 
 @NgModule({
   declarations: [

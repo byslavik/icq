@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import UserInfo from './models/userInfo.model';
 import Dialog from './models/dialog.model';
+import { docCookies } from './helpers/cookies'
 
 @Injectable()
 
@@ -15,6 +16,8 @@ export class AppService {
   }
   
   setUser(newUser: UserInfo){
+    console.log('set user', newUser)
+    
     this.userInfo = newUser
   }
 
@@ -26,6 +29,8 @@ export class AppService {
   private token: string = ''
   
   setToken(token: string){
+    console.log('set token', token)
+    docCookies.setItem('authorization', token);
     this.token = token
   }
 

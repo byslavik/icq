@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.servise'
+import { ApiService } from '../../../../services/api.servise'
 
 @Component({
   selector: 'register-form',
@@ -12,6 +12,7 @@ export class RegisterFormComponent {
   name: string
   email: string
   message: string
+
   constructor(private api:ApiService ) {
   }
 

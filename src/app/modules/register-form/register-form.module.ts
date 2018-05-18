@@ -7,21 +7,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppService } from '../../app.service'
 import { ApiService } from '../../services/api.servise'
 
-import { RegisterFormComponent } from './register-form.component'
-import { FieldComponent } from '../../components/field/field.component'
+import { RegisterFormComponent } from './components/register-form/register-form.component'
+import { LoginFormComponent } from './components/login-form/login-form.component'
 
 const appRoutes: Routes = [
   {
     path: 'register',
-    component: RegisterFormComponent,
-    data: { title: 'Heroes List' }
+    component: RegisterFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginFormComponent
   }
 ];
 
 @NgModule({
   declarations: [
     RegisterFormComponent,
-    FieldComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +33,9 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  exports: [RegisterFormComponent],
+  exports: [],
   providers: [AppService, ApiService],
-  bootstrap: [RegisterFormComponent]
+  bootstrap: []
 })
 
 export class RegisterFormModule { }

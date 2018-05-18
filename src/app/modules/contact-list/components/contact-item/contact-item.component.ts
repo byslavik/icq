@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import Contact from '../../../../models/contact.model'
+import UserInfo from '../../../../models/userInfo.model'
+import { ApiService } from '../../../../services/api.servise'
 
 @Component({
   selector: 'contact-item',
@@ -7,5 +8,12 @@ import Contact from '../../../../models/contact.model'
   styleUrls: ['./contact-item.component.css']
 })
 export class ContactItemComponent {
-  @Input() data: Contact
+
+  constructor (private api: ApiService) {}
+
+  @Input() data: UserInfo
+
+  addUserToContacts(id:string) {
+    this.api.addUserToContacts({ contactId: id })
+  }
 }

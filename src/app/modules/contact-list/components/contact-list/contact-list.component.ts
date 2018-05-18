@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import Contact from '../../../../models/contact.model'
-import { ContactsService } from '../../contact-list.service'
+import UserInfo from '../../../../models/userInfo.model'
+import { AppService } from '../../../../app.service'
+import { ApiService } from '../../../../services/api.servise'
 
 @Component({
   selector: 'contact-list',
@@ -9,11 +10,23 @@ import { ContactsService } from '../../contact-list.service'
 })
 
 export class ContactListComponent implements OnInit {
-  contacts: Contact[]
+  currentUser: UserInfo
+  myContacts: UserInfo[]
+  allContacts: UserInfo[]
+  isMyContact: Boolean = false
 
-  constructor(private contactsService: ContactsService) {}
+  constructor(private appService: AppService, private api: ApiService) {}
       
   ngOnInit() {
-    this.contactsService.loadContacts().subscribe((data: Contact[]) => this.contacts = data)
+    this.currentUser = this.appService.getUser()
+    this.myContacts = this.currentUser.contacts
+    this.api.getAllUsers().subscribe((data: any) => {
+      this.allContacts = data.allContacts;
+      this.myContacts = data.myContacts
+    })
+  }
+
+  changeContactTab(isChange){
+    this.isMyContact = isChange
   }
 }

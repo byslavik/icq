@@ -11,6 +11,7 @@ export class FieldComponent implements OnInit{
   @Input() name: string
   @Input() placeholder: string
   @Input() label: string
+  @Input() ngModel: NgModel
 
   ngOnInit() {
     console.log(this.type, this.label, this.placeholder, this.type, this.name)
